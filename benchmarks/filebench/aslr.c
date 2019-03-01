@@ -16,7 +16,7 @@
  * functions should be added.
  */
 
-#include <sys/personality.h>
+// #include <sys/personality.h>
 
 #include "filebench.h"
 #include "aslr.h"
