@@ -1,0 +1,12 @@
+gcc -static -c -o mcf.o -DSPEC_CPU -DNDEBUG  -DWANT_STDC_PROTO  -O2 -fno-strict-aliasing       -DSPEC_CPU_LP64         mcf.c
+gcc -static -c -o mcfutil.o -DSPEC_CPU -DNDEBUG  -DWANT_STDC_PROTO  -O2 -fno-strict-aliasing       -DSPEC_CPU_LP64         mcfutil.c
+gcc -static -c -o readmin.o -DSPEC_CPU -DNDEBUG  -DWANT_STDC_PROTO  -O2 -fno-strict-aliasing       -DSPEC_CPU_LP64         readmin.c
+gcc -static -c -o implicit.o -DSPEC_CPU -DNDEBUG  -DWANT_STDC_PROTO  -O2 -fno-strict-aliasing       -DSPEC_CPU_LP64         implicit.c
+gcc -static -c -o pstart.o -DSPEC_CPU -DNDEBUG  -DWANT_STDC_PROTO  -O2 -fno-strict-aliasing       -DSPEC_CPU_LP64         pstart.c
+gcc -static -c -o output.o -DSPEC_CPU -DNDEBUG  -DWANT_STDC_PROTO  -O2 -fno-strict-aliasing       -DSPEC_CPU_LP64         output.c
+gcc -static -c -o treeup.o -DSPEC_CPU -DNDEBUG  -DWANT_STDC_PROTO  -O2 -fno-strict-aliasing       -DSPEC_CPU_LP64         treeup.c
+gcc -static -c -o pbla.o -DSPEC_CPU -DNDEBUG  -DWANT_STDC_PROTO  -O2 -fno-strict-aliasing       -DSPEC_CPU_LP64         pbla.c
+gcc -static -c -o pflowup.o -DSPEC_CPU -DNDEBUG  -DWANT_STDC_PROTO  -O2 -fno-strict-aliasing       -DSPEC_CPU_LP64         pflowup.c
+gcc -static -c -o psimplex.o -DSPEC_CPU -DNDEBUG  -DWANT_STDC_PROTO  -O2 -fno-strict-aliasing       -DSPEC_CPU_LP64         psimplex.c
+gcc -static -c -o pbeampp.o -DSPEC_CPU -DNDEBUG  -DWANT_STDC_PROTO  -O2 -fno-strict-aliasing       -DSPEC_CPU_LP64         pbeampp.c
+gcc -static   -O2 -fno-strict-aliasing  -DSPEC_CPU_LP64        mcf.o mcfutil.o readmin.o implicit.o pstart.o output.o treeup.o pbla.o pflowup.o psimplex.o pbeampp.o             -lm        -o mcf

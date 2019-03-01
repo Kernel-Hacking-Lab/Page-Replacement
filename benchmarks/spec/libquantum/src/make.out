@@ -1,0 +1,17 @@
+gcc --static -c -o classic.o -DSPEC_CPU -DNDEBUG    -O2 -fno-strict-aliasing       -DSPEC_CPU_LP64 -DSPEC_CPU_LINUX        classic.c
+gcc --static -c -o complex.o -DSPEC_CPU -DNDEBUG    -O2 -fno-strict-aliasing       -DSPEC_CPU_LP64 -DSPEC_CPU_LINUX        complex.c
+gcc --static -c -o decoherence.o -DSPEC_CPU -DNDEBUG    -O2 -fno-strict-aliasing       -DSPEC_CPU_LP64 -DSPEC_CPU_LINUX        decoherence.c
+gcc --static -c -o expn.o -DSPEC_CPU -DNDEBUG    -O2 -fno-strict-aliasing       -DSPEC_CPU_LP64 -DSPEC_CPU_LINUX        expn.c
+gcc --static -c -o gates.o -DSPEC_CPU -DNDEBUG    -O2 -fno-strict-aliasing       -DSPEC_CPU_LP64 -DSPEC_CPU_LINUX        gates.c
+gcc --static -c -o matrix.o -DSPEC_CPU -DNDEBUG    -O2 -fno-strict-aliasing       -DSPEC_CPU_LP64 -DSPEC_CPU_LINUX        matrix.c
+gcc --static -c -o measure.o -DSPEC_CPU -DNDEBUG    -O2 -fno-strict-aliasing       -DSPEC_CPU_LP64 -DSPEC_CPU_LINUX        measure.c
+gcc --static -c -o oaddn.o -DSPEC_CPU -DNDEBUG    -O2 -fno-strict-aliasing       -DSPEC_CPU_LP64 -DSPEC_CPU_LINUX        oaddn.c
+gcc --static -c -o objcode.o -DSPEC_CPU -DNDEBUG    -O2 -fno-strict-aliasing       -DSPEC_CPU_LP64 -DSPEC_CPU_LINUX        objcode.c
+gcc --static -c -o omuln.o -DSPEC_CPU -DNDEBUG    -O2 -fno-strict-aliasing       -DSPEC_CPU_LP64 -DSPEC_CPU_LINUX        omuln.c
+gcc --static -c -o qec.o -DSPEC_CPU -DNDEBUG    -O2 -fno-strict-aliasing       -DSPEC_CPU_LP64 -DSPEC_CPU_LINUX        qec.c
+gcc --static -c -o qft.o -DSPEC_CPU -DNDEBUG    -O2 -fno-strict-aliasing       -DSPEC_CPU_LP64 -DSPEC_CPU_LINUX        qft.c
+gcc --static -c -o qureg.o -DSPEC_CPU -DNDEBUG    -O2 -fno-strict-aliasing       -DSPEC_CPU_LP64 -DSPEC_CPU_LINUX        qureg.c
+gcc --static -c -o shor.o -DSPEC_CPU -DNDEBUG    -O2 -fno-strict-aliasing       -DSPEC_CPU_LP64 -DSPEC_CPU_LINUX        shor.c
+gcc --static -c -o version.o -DSPEC_CPU -DNDEBUG    -O2 -fno-strict-aliasing       -DSPEC_CPU_LP64 -DSPEC_CPU_LINUX        version.c
+gcc --static -c -o specrand.o -DSPEC_CPU -DNDEBUG    -O2 -fno-strict-aliasing       -DSPEC_CPU_LP64 -DSPEC_CPU_LINUX        specrand.c
+gcc --static   -O2 -fno-strict-aliasing  -DSPEC_CPU_LP64 -DSPEC_CPU_LINUX       classic.o complex.o decoherence.o expn.o gates.o matrix.o measure.o oaddn.o objcode.o omuln.o qec.o qft.o qureg.o shor.o version.o specrand.o             -lm        -o libquantum
