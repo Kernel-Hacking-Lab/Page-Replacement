@@ -30,17 +30,12 @@
 int bloom_add(struct bloom * bloom,
                            const void * buffer, int len)
 {
-  if (bloom->ready == 0) {
-    printf("bloom at %p not initialized!\n", (void *)bloom);
-    return -1;
-  }
-
   register unsigned int a = murmurhash2(buffer, len, 0x9747b28c);
   register unsigned int b = murmurhash2(buffer, len, a);
   register unsigned int x;
   register unsigned int i;
 
-//   printf("Add hashes %d, %d\n", a, b);
+//   printf("Sub hashes %d, %d\n", a, b);
   for (i = 0; i < bloom->hashes; i++) {
     x = (a + i*b) % bloom->shorts;
     bloom->bf[x] += 1;
@@ -49,14 +44,26 @@ int bloom_add(struct bloom * bloom,
   return 1;
 }
 
+int bloom_sub(struct bloom * bloom,
+                           const void * buffer, int len)
+{
+  register unsigned int a = murmurhash2(buffer, len, 0x9747b28c);
+  register unsigned int b = murmurhash2(buffer, len, a);
+  register unsigned int x;
+  register unsigned int i;
+
+//   printf("Add hashes %d, %d\n", a, b);
+  for (i = 0; i < bloom->hashes; i++) {
+    x = (a + i*b) % bloom->shorts;
+    bloom->bf[x] -= 1;
+  }
+
+  return 1;
+}
+
 int bloom_check(struct bloom * bloom,
                            const void * buffer, int len)
 {
-  if (bloom->ready == 0) {
-    printf("bloom at %p not initialized!\n", (void *)bloom);
-    return -1;
-  }
-
   register int estimate = 0;
   register unsigned int a = murmurhash2(buffer, len, 0x9747b28c);
   register unsigned int b = murmurhash2(buffer, len, a);

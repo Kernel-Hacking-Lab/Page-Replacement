@@ -106,6 +106,7 @@ int bloom_check(struct bloom * bloom, const void * buffer, int len);
  *
  */
 int bloom_add(struct bloom * bloom, const void * buffer, int len);
+int bloom_sub(struct bloom * bloom, const void * buffer, int len);
 
 
 /** ***************************************************************************
