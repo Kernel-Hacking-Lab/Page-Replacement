@@ -27,14 +27,6 @@
 #define STRING(n) #n
 
 
-int short_add(unsigned short * buf,
-                                   unsigned int x)
-{
-  buf[x] += 1;        // expensive memory access
-  return 1;
-}
-
-
 int bloom_add(struct bloom * bloom,
                            const void * buffer, int len)
 {
@@ -51,7 +43,7 @@ int bloom_add(struct bloom * bloom,
 //   printf("Add hashes %d, %d\n", a, b);
   for (i = 0; i < bloom->hashes; i++) {
     x = (a + i*b) % bloom->shorts;
-    short_add(bloom->bf, x);
+    bloom->bf[x] += 1;
   }
 
   return 1;
