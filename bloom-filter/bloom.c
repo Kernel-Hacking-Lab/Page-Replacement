@@ -27,17 +27,18 @@
 #define STRING(n) #n
 
 
-inline static int test_bit_set_bit(unsigned int * buf,
+inline static int test_bit_set_bit(unsigned char * buf,
                                    unsigned int x, int set_bit)
 {
   unsigned int byte = x >> 3;
-  unsigned int c = buf[byte];        // expensive memory access
+  unsigned char c = buf[byte];        // expensive memory access
+  unsigned int mask = 1 << (x % 8);
 
-  if (c) {
+  if (c & mask) {
     return 1;
   } else {
     if (set_bit) {
-      buf[byte] = c;
+      buf[byte] = c | mask;
     }
     return 0;
   }
@@ -58,8 +59,6 @@ static int bloom_check_add(struct bloom * bloom,
   register unsigned int x;
   register unsigned int i;
 
-  printf("Hashes %d : %d \n", a, b);
-
   for (i = 0; i < bloom->hashes; i++) {
     x = (a + i*b) % bloom->bits;
     if (test_bit_set_bit(bloom->bf, x, add)) {
@@ -69,9 +68,6 @@ static int bloom_check_add(struct bloom * bloom,
       return 0;
     }
   }
-
-//   for(int i = 0; i < bloom->bytes; i++)
-//     printf("%d,", bloom->bf[i]);
 
   if (hits == bloom->hashes) {
     return 1;                // 1 == element already in (or collision)
@@ -114,9 +110,7 @@ int bloom_init(struct bloom * bloom, int entries, double error)
 
   bloom->hashes = (int)ceil(0.693147180559945 * bloom->bpe);  // ln(2)
 
-  bloom->bf = (unsigned int *)calloc(bloom->bytes, sizeof(unsigned int));
-  for(int i = 0; i < bloom->bytes; i++)
-    bloom->bf[i] = 0;
+  bloom->bf = (unsigned char *)calloc(bloom->bytes, sizeof(unsigned char));
   if (bloom->bf == NULL) {                                   // LCOV_EXCL_START
     return 1;
   }                                                          // LCOV_EXCL_STOP

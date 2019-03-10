@@ -5,10 +5,10 @@
 
 int main(){
     struct bloom bloom;
-    bloom_init(&bloom, 900, 0.01);
+    bloom_init(&bloom, 1000, 0.1);
     bloom.ready = 1;
 
-    sleep(1);
+    printf("Number of bits = %d\n", bloom.bits);
 
     int val = 10;
 
@@ -23,7 +23,7 @@ int main(){
         bloom_add(&bloom, &val, 4);
     }
 
-    for(int i = 101; i < 120; i++){
+    for(int i = 101; i < 1000000; i++){
         val = i;
         if (bloom_check(&bloom, &val, 4)) {
             printf("%d may be there!\n", val);

@@ -34,7 +34,7 @@ struct bloom
   // change incompatibly at any moment. Client code MUST NOT access or rely
   // on these.
   double bpe;
-  unsigned int * bf;
+  unsigned char * bf;
   int ready;
 };
 
