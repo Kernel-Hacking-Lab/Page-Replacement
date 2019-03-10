@@ -1,12 +1,12 @@
 /*
- *  Copyright (c) 2012-2019, Jyri J. Virkki
+ *  Copyright (c) Shreshth Tuli, Udit Jain
  *  All rights reserved.
  *
  *  This file is under BSD license. See LICENSE file.
  */
 
 /*
- * Refer to bloom.h for documentation on the public interfaces.
+ * Refer to counting_bloom.h for documentation on the public interfaces.
  */
 
 #include <assert.h>
