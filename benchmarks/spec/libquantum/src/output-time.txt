@@ -1,0 +1,6 @@
+N = 500, 47 qubits required
+Random seed: 33
+Measured 157286 (0.599998), fractional approximation is 3/5.
+Odd denominator, trying to expand by 2.
+Possible period is 10.
+500 = 4 * 125
